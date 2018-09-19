@@ -15,6 +15,26 @@ const Nav = () => (
             Oracle
           </Link>
         </li>
+        <li>
+          <Link to="/addplace">
+            Add Destination
+          </Link>
+        </li>
+        <li>
+          <Link to="/cardarchive">
+            WizCard Archive
+          </Link>
+        </li>
+        <li>
+          <Link to="/randomcard">
+            Random Card
+          </Link>
+        </li>
+        <li>
+          <Link to="/createcard">
+            Create WizCard
+          </Link>
+        </li>
       </ul>
     </div>
   </div>
