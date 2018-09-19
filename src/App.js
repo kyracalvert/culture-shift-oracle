@@ -9,8 +9,8 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import UserPage from './components/UserPage/UserPage';
-import InfoPage from './components/InfoPage/InfoPage';
+import HomeView from './components/HomeView/HomeView';
+import OracleView from './components/OracleView/OracleView';
 
 import './styles/main.css';
 
@@ -30,11 +30,11 @@ const App = () => (
         />
         <Route
           path="/user"
-          component={UserPage}
+          component={HomeView}
         />
         <Route
-          path="/info"
-          component={InfoPage}
+          path="/oracle"
+          component={OracleView}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
