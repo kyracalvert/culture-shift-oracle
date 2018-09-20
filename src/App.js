@@ -6,6 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import LogoComponent from './components/LogoComponent/LogoComponent';
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
@@ -20,18 +21,25 @@ import AddPlaceView from './components/AddPlaceView/AddPlaceView';
 
 const App = () => (
   <div>
-    <Header title="Culture Shift Oracle" />
     <Router>
-      <Switch>
+      <div>
+        <Header  />
+        {/* title="Culture Shift Oracle" */}
+        {/* <Switch> */}
+
         <Redirect exact from="/" to="/home" />
         <Route
           path="/home"
+          component={HomeView}
+        />
+         <Route
+          path="/login"
           component={LoginPage}
         />
-        <Route
+        {/* <Route  
           path="/register"
           component={RegisterPage}
-        />
+        />*/}
         <Route
           path="/user"
           component={HomeView}
@@ -40,10 +48,12 @@ const App = () => (
           path="/oracle"
           component={OracleView}
         />
-           <Route
+
+        <Route
           path="/addplace"
           component={AddPlaceView}
         />
+        {/*
           <Route
           path="/cardarchive"
           component={CardArchiveView}
@@ -56,10 +66,11 @@ const App = () => (
           path="/createcard"
           component={CreateCardView}
         />
-        {/* OTHERWISE (no path!) */}
-        <Route render={() => <h1>404</h1>} />
+        {/* OTHERWISE (no path!) }
+        <Route render={() => <h1>404</h1>} />}*/}
 
-      </Switch>
+        {/* </Switch> */}
+      </div>
     </Router>
   </div>
 );

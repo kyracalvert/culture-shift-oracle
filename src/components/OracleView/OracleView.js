@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Nav from '../../components/Nav/Nav';
+import Header from '../Header/Header';
+
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
@@ -10,32 +11,30 @@ const mapStateToProps = state => ({
 
 class OracleView extends Component {
   componentDidMount() {
-    this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
-    }
-  }
+  // componentDidUpdate() {
+  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
+  //     this.props.history.push('home');
+  //   }
+  // }
 
   render() {
     let content = null;
 
-    if (this.props.user.userName) {
-      content = (
-        <div>
-          <p>
-            Oracle
+
+    content = (
+      <div>
+        <p>
+          Oracle
           </p>
-        </div>
-      );
-    }
+      </div>
+    );
 
     return (
       <div>
-        <Nav />
-        { content }
+        {content}
       </div>
     );
   }

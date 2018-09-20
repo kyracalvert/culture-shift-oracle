@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
+import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -15,26 +17,29 @@ const mapStateToProps = state => ({
   
     componentDidUpdate() {
       if (!this.props.user.isLoading && this.props.user.userName === null) {
-        this.props.history.push('home');
+        this.props.history.push('user');
       }
     }
-  
+
+
     render() {
       let content = null;
   
       if (this.props.user.userName) {
         content = (
           <div>
-            <p>
-              Add Destination
-            </p>
+            <h1
+              id="welcome"
+            >
+              Add a destination here, { this.props.user.userName }!
+            </h1>
+            {/* <p>Your ID is: {this.props.user.id}</p> */}
           </div>
         );
       }
   
       return (
         <div>
-          <Nav />
           { content }
         </div>
       );

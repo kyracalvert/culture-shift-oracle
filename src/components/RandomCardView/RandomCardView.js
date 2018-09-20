@@ -23,14 +23,22 @@ class RandomCardView extends Component {
     let content = null;
 
     if (this.props.user.userName) {
-      content = (
-        <div>
-          <p>
-           Random Card
-          </p>
-        </div>
-      );
-    }
+        content = (
+          <div>
+            <h1
+              id="welcome"
+            >
+              Click to choose a random card, { this.props.user.userName }!
+            </h1>
+            {/* <p>Your ID is: {this.props.user.id}</p> */}
+            <button
+              onClick={this.logout}
+            >
+              Log Out
+            </button>
+          </div>
+        );
+      }
 
     return (
       <div>

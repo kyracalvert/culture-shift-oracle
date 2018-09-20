@@ -15,7 +15,7 @@ class CardArchiveView extends Component {
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+      this.props.history.push('user');
     }
   }
 
@@ -23,14 +23,22 @@ class CardArchiveView extends Component {
     let content = null;
 
     if (this.props.user.userName) {
-      content = (
-        <div>
-          <p>
-            WizCard Archives
-          </p>
-        </div>
-      );
-    }
+        content = (
+          <div>
+            <h1
+              id="welcome"
+            >
+              Here is the WizCard Archive, { this.props.user.userName }!
+            </h1>
+            {/* <p>Your ID is: {this.props.user.id}</p> */}
+            <button
+              onClick={this.logout}
+            >
+              Log Out
+            </button>
+          </div>
+        );
+      }
 
     return (
       <div>

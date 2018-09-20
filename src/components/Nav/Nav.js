@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-const Nav = () => (
+class Nav extends Component { 
+  render() { 
+    return (
   <div className="navbar">
     <div>
       <ul>
@@ -16,28 +18,16 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/addplace">
-            Add Destination
-          </Link>
-        </li>
-        <li>
-          <Link to="/cardarchive">
-            WizCard Archive
-          </Link>
-        </li>
-        <li>
-          <Link to="/randomcard">
-            Random Card
-          </Link>
-        </li>
-        <li>
-          <Link to="/createcard">
-            Create WizCard
+          <Link to="/login">
+            Login
           </Link>
         </li>
       </ul>
     </div>
+    <img className="spiritCircle" src="images/spiritCircleStars.png" />
+   <h1>Culture Shift Oracle</h1>
   </div>
-);
+)};
+}
 
 export default Nav;

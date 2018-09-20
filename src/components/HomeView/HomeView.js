@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
+import Header from '../Header/Header';
+
+import LoginPage from '../../components/LoginPage/LoginPage';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import { triggerLogout } from '../../redux/actions/loginActions';
 
 
 const mapStateToProps = state => ({
@@ -16,15 +18,12 @@ class HomeView extends Component {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
-    }
-  }
+  // componentDidUpdate() {
+  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
+  //     this.props.history.push('home');
+  //   }
+  // }
 
-  logout = () => {
-    this.props.dispatch(triggerLogout());
-  }
 
   render() {
     let content = null;
@@ -38,19 +37,26 @@ class HomeView extends Component {
             Welcome, { this.props.user.userName }!
           </h1>
           {/* <p>Your ID is: {this.props.user.id}</p> */}
-          <button
-            onClick={this.logout}
+        </div>
+      );
+    }
+    else {
+      content = (
+        <div>
+          <h1
+            id="welcome"
           >
-            Log Out
-          </button>
+            Welcome!
+          </h1>
+          {/* <p>Your ID is: {this.props.user.id}</p> */}
         </div>
       );
     }
 
     return (
       <div>
-        <Nav />
         { content }
+        {/* PUT SHARED CONTENT HERE */}
       </div>
     );
   }
