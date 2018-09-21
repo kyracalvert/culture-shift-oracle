@@ -25,7 +25,6 @@ const App = () => (
       <div>
         <Header  />
         {/* title="Culture Shift Oracle" */}
-        {/* <Switch> */}
 
         <Redirect exact from="/" to="/home" />
         <Route
@@ -36,10 +35,10 @@ const App = () => (
           path="/login"
           component={LoginPage}
         />
-        {/* <Route  
+        <Route  
           path="/register"
           component={RegisterPage}
-        />*/}
+        />
         <Route
           path="/user"
           component={HomeView}
@@ -53,7 +52,7 @@ const App = () => (
           path="/addplace"
           component={AddPlaceView}
         />
-        {/*
+       
           <Route
           path="/cardarchive"
           component={CardArchiveView}
@@ -69,7 +68,6 @@ const App = () => (
         {/* OTHERWISE (no path!) }
         <Route render={() => <h1>404</h1>} />}*/}
 
-        {/* </Switch> */}
       </div>
     </Router>
   </div>

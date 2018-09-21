@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
@@ -10,7 +9,7 @@ const mapStateToProps = state => ({
 
 class CardArchiveView extends Component {
   componentDidMount() {
-    this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
   componentDidUpdate() {
@@ -23,27 +22,22 @@ class CardArchiveView extends Component {
     let content = null;
 
     if (this.props.user.userName) {
-        content = (
-          <div>
-            <h1
-              id="welcome"
-            >
-              Here is the WizCard Archive, { this.props.user.userName }!
+      content = (
+        <div>
+          <h1
+            id="welcome"
+          >
+            Here is the WizCard Archive, {this.props.user.userName}!
             </h1>
-            {/* <p>Your ID is: {this.props.user.id}</p> */}
-            <button
-              onClick={this.logout}
-            >
-              Log Out
-            </button>
-          </div>
-        );
-      }
+          {/* <p>Your ID is: {this.props.user.id}</p> */}
+
+        </div>
+      );
+    }
 
     return (
       <div>
-        <Nav />
-        { content }
+        {content}
       </div>
     );
   }
