@@ -73,13 +73,13 @@ class AddPlaceView extends Component {
                         Add a destination here, {this.props.user.userName}!
             </h1>
              <form onSubmit={this.handleFormSubmit}>
-                        <input type="text" placeholder="name" value={this.props.placeToAdd.placeToAdd.name}  name="name" onChange={this.handlePlaceChange} />
+                        <input type="text" placeholder="place" value={this.props.placeToAdd.placeToAdd.place}  name="place" onChange={this.handlePlaceChange} />
                         <input type="text" placeholder="description" value={this.props.placeToAdd.placeToAdd.description} name="description" onChange={this.handleDescriptionChange} />
                         <input type="text" placeholder="image url" value={this.props.placeToAdd.placeToAdd.image_url} name="image_url" onChange={this.handleImageChange} />
                         <input type="submit" value="submit" /> 
                        
                     </form>
-                    {/* <p>{JSON.stringify(this.props.placeToAdd)}</p> */}
+                    <p>{JSON.stringify(this.props.placeToAdd)}</p>
                 </div>
             );
         }
