@@ -33,6 +33,29 @@ body {
     color: white;
 }
 
+.your_card_text {
+    text-align: center;
+    color: white;
+}
+
+.oracle_button {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.consult_button {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 10px 10px 10px 10px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
 .spiritCircle {
     width: 200px;
     height: 200px;

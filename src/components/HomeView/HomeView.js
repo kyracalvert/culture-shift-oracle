@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Nav from '../../components/Nav/Nav';
 import Header from '../Header/Header';
@@ -57,6 +58,10 @@ class HomeView extends Component {
       <div>
         { content }
         {/* PUT SHARED CONTENT HERE */}
+        <h2 className="your_card_text">Today's WizCard:</h2>
+        <Link to="/cardarchive"><img src="https://via.placeholder.com/350x150"></img></Link>
+        <br/>
+        <Link className="consult_button" to="/oracle">Consult the Oracle</Link>
       </div>
     );
   }

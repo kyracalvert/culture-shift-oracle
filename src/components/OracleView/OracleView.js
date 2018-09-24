@@ -31,11 +31,30 @@ class OracleView extends Component {
           </p>
       </div>
     );
-
     return (
       <div>
         {content}
-      </div>
+         {/* PUT SHARED CONTENT HERE */}
+        <div>
+         <input placeholder="Your Name" /> 
+         </div>
+         <div>   
+         <input placeholder="Word 1"/>
+         </div>
+         <div>   
+         <input placeholder="Word 2"/>
+         </div>
+         <div>   
+         <input placeholder="Word 3"/>
+         </div>
+         <div>
+            <input
+              type="submit"
+              name="submit"
+              value="Submit"
+            />
+          </div>
+      </div> 
     );
   }
 }

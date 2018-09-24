@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
+    res.sendStatus(200);
 
 });
 
