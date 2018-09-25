@@ -32,7 +32,7 @@ class OracleView extends Component {
       // TO DO: pass category as route param.
     }).then((results) => {
       console.log('HERE',results.data);
-      const img_path = results.data.contents.qimage.download_uri;
+      const img_path = results.data.contents.quote;
       this.setState({img_path: img_path})
     }).catch((error) => {
       console.log('HERE',error)
@@ -75,7 +75,9 @@ class OracleView extends Component {
               value="Submit"
             />
           </div>
-          <img src={this.state.img_path} />
+          <div className="crop-image">
+            <p>{this.state.img_path} </p>
+          </div>
       </div> 
     );
   }
