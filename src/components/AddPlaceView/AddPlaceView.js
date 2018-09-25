@@ -75,7 +75,7 @@ class AddPlaceView extends Component {
              <form onSubmit={this.handleFormSubmit}>
                         <input type="text" placeholder="place" value={this.props.placeToAdd.placeToAdd.place}  name="place" onChange={this.handlePlaceChange} />
                         <input type="text" placeholder="description" value={this.props.placeToAdd.placeToAdd.description} name="description" onChange={this.handleDescriptionChange} />
-                        <input type="text" placeholder="image url" value={this.props.placeToAdd.placeToAdd.image_url} name="image_url" onChange={this.handleImageChange} />
+                        <input type="text" placeholder="image path" value={this.props.placeToAdd.placeToAdd.img_path} name="img_path" onChange={this.handleImageChange} />
                         <input type="submit" value="submit" /> 
                        
                     </form>

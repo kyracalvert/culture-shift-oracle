@@ -38,12 +38,7 @@ body {
     color: white;
 }
 
-.oracle_button {
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
+/* link styled as button */
 .consult_button {
     font: bold 11px Arial;
     text-decoration: none;
@@ -150,3 +145,29 @@ p {
     color: white;
 }
 
+/* link styled as button */
+.your_own {
+    float: right;
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 10px 10px 10px 10px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+/* link styled as button */
+.draw_random {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 10px 10px 10px 10px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}

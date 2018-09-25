@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -29,8 +30,8 @@ class CardArchiveView extends Component {
           >
             Here is the WizCard Archive, {this.props.user.userName}!
             </h1>
-          {/* <p>Your ID is: {this.props.user.id}</p> */}
-
+            <Link className="draw_random" to="/randomcard">Draw Random</Link>
+            <Link className="your_own" to="/createcard">Create Your Own</Link>
         </div>
       );
     }

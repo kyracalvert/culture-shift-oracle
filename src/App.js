@@ -3,7 +3,7 @@ import {
   HashRouter as Router,
   Route,
   Redirect,
-  Switch,
+  // Switch,
 } from 'react-router-dom';
 
 import Header from './components/Header/Header';
@@ -64,9 +64,10 @@ const App = () => (
           path="/createcard"
           component={CreateCardView}
         />
-        {/* OTHERWISE (no path!) }
-        <Route render={() => <h1>404</h1>} />}*/}
-
+        {/* OTHERWISE (no path!)  */}
+        {/* why isn't this working when routing 
+        to a destination that doesn't exist? */}
+        <Route render={() => <h1>404</h1>} />}
       </div>
     </Router>
   </div>

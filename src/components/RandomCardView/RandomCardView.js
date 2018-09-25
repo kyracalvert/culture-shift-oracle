@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
@@ -30,6 +29,7 @@ class RandomCardView extends Component {
             >
               Click to choose a random card, { this.props.user.userName }!
             </h1>
+            <button>Draw Random</button>
             {/* <p>Your ID is: {this.props.user.id}</p> */}
           </div>
         );

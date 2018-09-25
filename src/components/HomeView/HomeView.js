@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Nav from '../../components/Nav/Nav';
-import Header from '../Header/Header';
+// import Nav from '../../components/Nav/Nav';
+// import Header from '../Header/Header';
 
-import LoginPage from '../../components/LoginPage/LoginPage';
+// import LoginPage from '../../components/LoginPage/LoginPage';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -59,7 +59,7 @@ class HomeView extends Component {
         { content }
         {/* PUT SHARED CONTENT HERE */}
         <h2 className="your_card_text">Today's WizCard:</h2>
-        <Link to="/cardarchive"><img src="https://via.placeholder.com/350x150"></img></Link>
+        <Link to="/cardarchive"><img src="https://via.placeholder.com/350x150" alt="Today's Wisdom Card"></img></Link>
         <br/>
         <Link className="consult_button" to="/oracle">Consult the Oracle</Link>
       </div>

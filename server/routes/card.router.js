@@ -12,14 +12,15 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-// post NEW DESTINATIONS to database
+
+
+// post NEW WIZCARDS to database
 router.post('/', (req, res) => {
-    console.log(req.body.placeToAdd);
-    res.sendStatus(200);
+    console.log("some text", req.body.cardToAdd);
     if (req.isAuthenticated()) {
-        const query = `INSERT INTO "places" ("user_id", "place", "description", "img_path") 
-        VALUES ($1, $2, $3, $4);`;
-        pool.query(query, [req.user.id, req.body.placeToAdd.place, req.body.placeToAdd.description, req.body.placeToAdd.img_path])
+        const query = `INSERT INTO "wizcards" ("user_id", "message", "img_path") 
+        VALUES ($1, $2, $3);`;
+        pool.query(query, [req.user.id, req.body.cardToAdd.message, req.body.cardToAdd.img_path])
         .then((results) => {
             res.sendStatus(201);
         }).catch((error)=> {
@@ -29,7 +30,6 @@ router.post('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-
 });
 
 module.exports = router;

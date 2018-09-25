@@ -53,7 +53,7 @@ class NavTwo extends Component {
             </li>
           </ul>
         </div>
-        <h1>Inkling's <img className="spiritCircle" src="images/spiritCircleStars.png" />Oracle</h1>    
+        <h1>Inkling's <img className="spiritCircle" alt="Inkling's Oracle Logo" src="images/spiritCircleStars.png" />Oracle</h1>    
       </div>
     )
   }
