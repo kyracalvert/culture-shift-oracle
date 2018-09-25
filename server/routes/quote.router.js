@@ -6,10 +6,10 @@ const axios = require("axios");
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/:word', (req, res) => {
     axios({
         method: 'GET', 
-        url: `http://quotes.rest/quote/image/search?category=pain&private=false`,
+        url: `http://quotes.rest/quote/image/search?category=${req.params.word}&private=false`,
         headers: { 'X-TheySaidSo-Api-Secret': process.env.API_KEY }, 
         //process.env.API_KEY will be replaced with the API key in .env file
     }) .then((results) => {

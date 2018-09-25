@@ -11,19 +11,24 @@ const mapStateToProps = state => ({
 class OracleView extends Component {
   constructor (props) {
     super(props);
-    this.state = {img_path: ''};
+    this.state = {img_path: '', word: ''};
   }
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-    this.getQuote();
+    // this.getQuote();
   }
 
+  handleWordChange = (event) => {
+    this.setState({
+      word: event.target.value
+    })
+  }
  
   getQuote = () => {
     console.log('getQuote');
     axios({
       method: 'GET',
-      url: '/api/quotes',
+      url: `/api/quotes/${this.state.word}`
       // TO DO: pass category as route param.
     }).then((results) => {
       console.log('HERE',results.data);
@@ -52,7 +57,8 @@ class OracleView extends Component {
          <input placeholder="Your Name" /> 
          </div>
          <div>   
-         <input placeholder="Word 1"/>
+           {/* onChange that resets state */}
+         <input onChange={this.handleWordChange}/>
          </div>
          {/* <div>   
          <input placeholder="Word 2"/>
