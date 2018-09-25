@@ -12,8 +12,6 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-
-
 // post NEW WIZCARDS to database
 router.post('/', (req, res) => {
     console.log("some text", req.body.cardToAdd);
