@@ -11,11 +11,17 @@ const mapStateToProps = state => ({
 class OracleView extends Component {
   constructor (props) {
     super(props);
-    this.state = {img_path: '', word: ''};
+    this.state = {img_path: '', name: '', word: '', show: false};
   }
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     // this.getQuote();
+  }
+
+  handleNameChange = (event) => {
+    this.setState({
+      name: event.target.value
+    })
   }
 
   handleWordChange = (event) => {
@@ -25,6 +31,9 @@ class OracleView extends Component {
   }
  
   getQuote = () => {
+    this.setState({
+      show: true
+    })
     console.log('getQuote');
     axios({
       method: 'GET',
@@ -40,7 +49,10 @@ class OracleView extends Component {
   }
   render() {
     let content = null;
-
+    let greeting;
+    if (this.state.show){
+      greeting = <h3> Thanks for your query, {this.state.name}! Your Oracle reading will appear below:</h3>
+    }
 
     content = (
       <div>
@@ -54,11 +66,11 @@ class OracleView extends Component {
         {content}
          {/* PUT SHARED CONTENT HERE */}
         <div>
-         <input placeholder="Your Name" /> 
+         <input placeholder="Your Name" onChange={this.handleNameChange} /> 
          </div>
          <div>   
            {/* onChange that resets state */}
-         <input onChange={this.handleWordChange}/>
+         <input placeholder="Your query" onChange={this.handleWordChange}/>
          </div>
          {/* <div>   
          <input placeholder="Word 2"/>
@@ -75,6 +87,9 @@ class OracleView extends Component {
               value="Submit"
             />
           </div>
+          <div >
+            {greeting}
+            </div>
           <div className="crop-image">
             <p>{this.state.img_path} </p>
           </div>
