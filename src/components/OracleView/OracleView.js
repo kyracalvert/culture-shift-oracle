@@ -72,6 +72,7 @@ class OracleView extends Component {
            {/* onChange that resets state */}
          <input placeholder="Your query" onChange={this.handleWordChange}/>
          </div>
+         
          {/* <div>   
          <input placeholder="Word 2"/>
          </div>

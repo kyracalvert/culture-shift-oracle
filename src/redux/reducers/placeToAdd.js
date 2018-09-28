@@ -6,12 +6,12 @@ const placeToAdd = (state={}, action) => {
     } else if (action.type === 'ADD_PLACE_DESCRIPTION'){
         return {...state, description: action.payload}
     } else if (action.type === 'ADD_PLACE_IMAGE'){
-        return {...state, image_url: action.payload}
+        return {...state, img_path: action.payload}
     } else if (action.type === 'RESET_STATE'){
         return (state = {
             place: '',
             description: '',
-            image_url: '',
+            img_path: '',
         });
     }
     return state
