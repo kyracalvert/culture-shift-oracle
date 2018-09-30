@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
-
+import {globals} from '../../globals';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -22,9 +22,9 @@ class AddPlaceView extends Component {
     componentDidMount() {
         // this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.config = {
-            cloud_name: "papaya1990",
-            api_key: "379285792766435",
-            api_secret: "TqNiTmntdxW7JRk91_LFBlcj570",
+            cloud_name: globals.env.CLOUDINARY_NAME,
+            api_key: globals.env.CLOUDINARY_KEY,
+            api_secret: globals.env.CLOUDINARY_SECRET,
             upload_preset: "ry3fnckm"
          }
     }

@@ -6,7 +6,16 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    
+    if (req.isAuthenticated()) {
+        const query = `SELECT "message", "img_path" FROM "wizcards";`;
+        pool.query(query).then((results)=> {
+            res.send(results.rows);
+        }).catch((error) => {
+            res.sendStatus(500);
+        });
+    }else {
+        res.sendStatus(403);
+    }
 });
 
 /**

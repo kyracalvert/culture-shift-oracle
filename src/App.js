@@ -67,7 +67,7 @@ const App = () => (
         {/* OTHERWISE (no path!)  */}
         {/* why isn't this working when routing 
         to a destination that doesn't exist? */}
-        <Route render={() => <h1>404</h1>} />}
+        <Route render={() => <h1>404</h1>} />
       </div>
     </Router>
   </div>

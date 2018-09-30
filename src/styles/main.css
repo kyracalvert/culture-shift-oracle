@@ -23,6 +23,10 @@ body {
      
 }
 
+.card_view {
+    color: white;
+}
+
 .crop-image img {
     max-width: 600px;
 }
