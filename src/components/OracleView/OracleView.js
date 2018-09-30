@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -56,9 +57,9 @@ class OracleView extends Component {
 
     content = (
       <div>
-        <p>
+        <h3>
           Oracle
-          </p>
+          </h3>
       </div>
     );
     return (
@@ -66,27 +67,14 @@ class OracleView extends Component {
         {content}
          {/* PUT SHARED CONTENT HERE */}
         <div>
-         <input placeholder="Your Name" onChange={this.handleNameChange} /> 
-         </div>
-         <div>   
+         <input className="oracle_inputs" placeholder="Your Name" onChange={this.handleNameChange} /> 
+       
            {/* onChange that resets state */}
-         <input placeholder="Your query" onChange={this.handleWordChange}/>
-         </div>
-         
-         {/* <div>   
-         <input placeholder="Word 2"/>
-         </div>
-         <div>   
-         <input placeholder="Word 3"/>
-         </div> */}
-
-         <div>
-            <input 
-              onClick={this.getQuote}
-              type="submit"
-              name="submit"
-              value="Submit"
-            />
+         <input className="oracle_inputs" placeholder="Your query" onChange={this.handleWordChange}/>
+ 
+         <Button className="oracle_submit" bsStyle="info"  onClick={this.getQuote}>
+              Submit
+            </Button>
           </div>
           <div >
             {greeting}

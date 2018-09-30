@@ -3,14 +3,51 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
+import { USER_ACTIONS } from '../../redux/actions/userActions';
+
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
 //changed from functional to class component
 class NavTwo extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: 
+      USER_ACTIONS.FETCH_USER });
+  }
   logout = () => {
     this.props.dispatch(triggerLogout());
   }
   render() {
+    let content = null;
+
+    if (this.props.user.userName) {
+      content = (
+        <div>
+          <p
+            id="welcome"
+          >
+            Welcome, {this.props.user.userName}!
+          </p>
+          {/* <p>Your ID is: {this.props.user.id}</p> */}
+        </div>
+      );
+    }
+    else {
+      content = (
+        <div>
+          <p
+            id="welcome"
+          >
+            Welcome!
+          </p>
+          {/* <p>Your ID is: {this.props.user.id}</p> */}
+        </div>
+      );
+    }
     return (
       <div className="navbar">
+      {content}
         <div>
           <ul>
             <li>
@@ -59,4 +96,4 @@ class NavTwo extends Component {
   }
 }
 
-export default connect()(NavTwo); // currying
+export default connect(mapStateToProps)(NavTwo); // currying

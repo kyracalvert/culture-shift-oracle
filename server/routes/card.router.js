@@ -18,6 +18,16 @@ router.get('/', (req, res) => {
     }
 });
 
+
+router.get('/random', (req, res) => {
+        const query = `SELECT "message", "img_path" FROM "wizcards" ORDER BY RANDOM() LIMIT 1;`;
+        pool.query(query).then((results)=> {
+            res.send(results.rows);
+        }).catch((error) => {
+            res.sendStatus(500);
+        });
+});
+
 /**
  * POST route template
  */

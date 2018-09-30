@@ -14,6 +14,7 @@ const addPlaceRouter = require ('./routes/places.router');
 const addCardRouter = require ('./routes/card.router');
 const quoteRouter = require ('./routes/quote.router');
 
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/addplace', addPlaceRouter);
 app.use('/api/addcard', addCardRouter);
 app.use('/api/quotes', quoteRouter);
+
 
 // Serve static files
 app.use(express.static('build'));

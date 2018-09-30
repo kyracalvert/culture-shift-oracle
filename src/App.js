@@ -3,7 +3,7 @@ import {
   HashRouter as Router,
   Route,
   Redirect,
-  // Switch,
+  Switch,
 } from 'react-router-dom';
 
 import Header from './components/Header/Header';
@@ -21,6 +21,7 @@ import AddPlaceView from './components/AddPlaceView/AddPlaceView';
 const App = () => (
   <div>
     <Router>
+      <Switch>
       <div>
         <Header  />
         {/* title="Culture Shift Oracle" */}
@@ -65,10 +66,9 @@ const App = () => (
           component={CreateCardView}
         />
         {/* OTHERWISE (no path!)  */}
-        {/* why isn't this working when routing 
-        to a destination that doesn't exist? */}
-        <Route render={() => <h1>404</h1>} />
       </div>
+      <Route render={() => <h1>404</h1>} />
+      </Switch>
     </Router>
   </div>
 );

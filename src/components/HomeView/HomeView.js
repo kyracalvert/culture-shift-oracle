@@ -1,24 +1,53 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 // import Nav from '../../components/Nav/Nav';
 // import Header from '../Header/Header';
 
 // import LoginPage from '../../components/LoginPage/LoginPage';
 
-import { USER_ACTIONS } from '../../redux/actions/userActions';
-
-
-const mapStateToProps = state => ({
-  user: state.user,
-});
 
 class HomeView extends Component {
-  componentDidMount() {
-    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showCard: true,
+      randomCard: ''
+    }
   }
 
+  // image shows when the page renders. when image is 
+  // clicked, message displays.
+  toggleCardDisplay = () => {
+    console.log('in toggleCardDisplay');
+    this.setState({
+      showCard: !this.state.showCard,
+    })
+  }
+
+  componentDidMount() {
+    this.getCard();
+
+  }
+
+  getCard = () => {
+    console.log('in getCard')
+    axios({
+      method: 'GET',
+      url: '/api/addcard/random',
+    }).then((response) => {
+      console.log(response.data);
+      this.setState({
+        randomCard: response.data[0],
+      })
+    }).catch((error) => {
+      console.log(`error: ${error}`);
+    })
+  }
   // componentDidUpdate() {
   //   if (!this.props.user.isLoading && this.props.user.userName === null) {
   //     this.props.history.push('home');
@@ -28,45 +57,39 @@ class HomeView extends Component {
 
   render() {
     let content = null;
+    let currentRandomCard = null;
+    let cardMessage = null;
 
-    if (this.props.user.userName) {
-      content = (
-        <div>
-          <h1
-            id="welcome"
-          >
-            Welcome, { this.props.user.userName }!
-          </h1>
-          {/* <p>Your ID is: {this.props.user.id}</p> */}
-        </div>
-      );
+    if (this.state.randomCard.img_path) {
+      currentRandomCard = (<img className="your_card_image" src={this.state.randomCard.img_path} alt="Today's Wisdom Card" />)
     }
-    else {
-      content = (
-        <div>
-          <h1
-            id="welcome"
-          >
-            Welcome!
-          </h1>
-          {/* <p>Your ID is: {this.props.user.id}</p> */}
-        </div>
-      );
+    if (this.state.showCard) {
+      cardMessage = (
+        <span>{ currentRandomCard }</span>
+      )
+    } else {
+      cardMessage = (
+        <span>{this.state.randomCard.message}</span>
+      )
     }
-
     return (
       <div>
-        { content }
+        {content}
         {/* PUT SHARED CONTENT HERE */}
         <h2 className="your_card_text">Today's WizCard:</h2>
-        <Link to="/cardarchive"><img src="https://via.placeholder.com/350x150" alt="Today's Wisdom Card"></img></Link>
-        <br/>
-        <Link className="consult_button" to="/oracle">Consult the Oracle</Link>
+        <div onClick={this.toggleCardDisplay} className="card_view">
+          {cardMessage}
+        </div>
+        {JSON.stringify(this.state.randomCard)}
+
+        <Link class="btn btn-info btn-lg btn-huge" to="/oracle">Consult the Oracle</Link>
       </div>
     );
   }
 }
 
+
+
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(HomeView);
+export default connect()(HomeView);
 

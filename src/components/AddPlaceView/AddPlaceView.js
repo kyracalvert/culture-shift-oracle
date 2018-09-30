@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
-import {globals} from '../../globals';
+import { globals } from '../../globals';
+import { Button } from 'react-bootstrap';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -14,7 +15,7 @@ class AddPlaceView extends Component {
     constructor(props) {
         super(props);
 
-        this.state={ 
+        this.state = {
             image: ''
         }
 
@@ -26,32 +27,32 @@ class AddPlaceView extends Component {
             api_key: globals.env.CLOUDINARY_KEY,
             api_secret: globals.env.CLOUDINARY_SECRET,
             upload_preset: "ry3fnckm"
-         }
+        }
     }
 
     componentDidUpdate() {
         if (!this.props.user.isLoading && this.props.user.userName === null) {
             this.props.history.push('user');
         }
-       
+
     }
 
     openCloudinary = (event) => {
         event.preventDefault();
         window.cloudinary.openUploadWidget(this.config, (error, result) => {
-          if (result) {
-            let cloudinaryUrl = result[0].url 
-            this.setState({
-              // store url to local state BEFORE dispatching an action
-              ...this.state,
-              image: cloudinaryUrl
-            })
-            this.props.dispatch({
-                type: 'ADD_PLACE_IMAGE',
-                payload: this.state.image
-            })
-            console.log(this.state.image);
-          }
+            if (result) {
+                let cloudinaryUrl = result[0].url
+                this.setState({
+                    // store url to local state BEFORE dispatching an action
+                    ...this.state,
+                    image: cloudinaryUrl
+                })
+                this.props.dispatch({
+                    type: 'ADD_PLACE_IMAGE',
+                    payload: this.state.image
+                })
+                console.log(this.state.image);
+            }
         })
     }
 
@@ -101,15 +102,17 @@ class AddPlaceView extends Component {
                     >
                         Add a destination here, {this.props.user.userName}!
             </h1>
-                    <form onSubmit={this.handleFormSubmit}>
-                        <input type="text" placeholder="place" value={this.props.placeToAdd.placeToAdd.place} name="place" onChange={this.handlePlaceChange} />
-                        <input type="text" placeholder="description" value={this.props.placeToAdd.placeToAdd.description} name="description" onChange={this.handleDescriptionChange} />
+                    <div onSubmit={this.handleFormSubmit}>
+                        <input className="oracle_inputs" type="text" placeholder="place" value={this.props.placeToAdd.placeToAdd.place} name="place" onChange={this.handlePlaceChange} />
+                        <input className="oracle_inputs" type="text" placeholder="description" value={this.props.placeToAdd.placeToAdd.description} name="description" onChange={this.handleDescriptionChange} />
                         {/* <input type="text" placeholder="image path" value={this.props.placeToAdd.placeToAdd.img_path} name="img_path" onChange={this.handleImageChange} /> */}
-                        <button onClick={this.openCloudinary}>Upload an image</button>
-                        <input  type="submit" value="submit" />
+                        <Button className="uploadButton" bsStyle="info" onClick={this.openCloudinary}>Upload an image</Button>
+                        <br/>
+                        <Button className="oracle_submit" bsStyle="info" onClick={this.getQuote}>
+                            Submit
+                        </Button>
 
-                    </form>
-                    <p>{JSON.stringify(this.props.placeToAdd)}</p>
+                    </div>
                 </div>
             );
         }
