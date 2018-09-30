@@ -25,6 +25,16 @@ body {
 
 .card_view {
     color: white;
+    width: 250px;
+    height: 250px;
+    background-color: black;
+    margin: 10px;
+    float: left;
+}
+
+.card-image {
+    width: 250px;
+    width: 250px;
 }
 
 .crop-image img {
@@ -161,7 +171,6 @@ p, h3 {
 
 /* link styled as button */
 .your_own {
-    float: right;
     font: bold 11px Arial;
     text-decoration: none;
     background-color: #EEEEEE;
@@ -171,6 +180,10 @@ p, h3 {
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
+    border-radius: 4px;
+    position: fixed;
+    bottom: -4px;
+    right: 10px;
 }
 
 /* link styled as button */
@@ -184,4 +197,15 @@ p, h3 {
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
+    border-radius: 4px;
+    position: fixed;
+    bottom: -4px;
+    left: 10px;
+}
+
+.crop-image {
+    height: 300px;
+    width: 300px;
+    float: left;
+    background-color: pink;
 }

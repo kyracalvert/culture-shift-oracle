@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { throws } from 'assert';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -11,6 +12,24 @@ const mapStateToProps = state => ({
 });
 
 class CardArchiveView extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showPicture: true,
+      currentCard: ''
+    }
+  }
+
+  // image shows when the page renders. when image is clicked, message displays.
+  toggleDisplay = (i) => {
+    console.log('In toggleDisplay');
+    this.setState({
+      showPicture: !this.state.showPicture,
+      currentCard: i
+    })
+  } // end toggle
+
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.getCards();
@@ -24,7 +43,7 @@ class CardArchiveView extends Component {
 
   getCards = () => {
     axios({
-      method: 'GET', 
+      method: 'GET',
       url: '/api/addcard',
     }).then((response) => {
       this.props.dispatch({
@@ -38,6 +57,9 @@ class CardArchiveView extends Component {
 
   render() {
     let content = null;
+    const showPicture = this.state.showPicture;
+
+    let cardContent;
 
     if (this.props.user.userName) {
       content = (
@@ -47,19 +69,29 @@ class CardArchiveView extends Component {
           >
             Here is the WizCard Archive, {this.props.user.userName}!
             </h1>
-            <card>
-               {this.props.cardDisplayReducer.map((card, i) =>{ 
-                return (
-                  <li className="card_view" key={i}>
-                  <img alt="" src={card.img_path} /> 
-                  <br/>
-                  {card.message}
-                  </li>
+          <card>
+            {this.props.cardDisplayReducer.map((card, i) => {
+              if (showPicture && this.state.currentCard===i) {
+                cardContent = (
+                  <span>{card.message}</span>
                 )
-              })} 
-            </card> 
-            <Link className="draw_random" to="/randomcard">Draw Random</Link>
-            <Link className="your_own" to="/createcard">Create Your Own</Link>
+              } else {
+                cardContent = (
+                  <img className="card-image" alt="" src={card.img_path} />
+                )
+              }
+              return (
+                <li key={i}>
+                <div onClick={()=>this.toggleDisplay(i)} className="card_view">
+                  {cardContent}
+                  </div>
+                </li>
+              )
+            })}
+          </card>
+          <br />
+          <Link className="draw_random" to="/randomcard">Draw Random</Link>
+          <Link className="your_own" to="/createcard">Create Your Own</Link>
         </div>
       );
     }

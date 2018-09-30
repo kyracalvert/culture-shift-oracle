@@ -69,13 +69,6 @@ class AddPlaceView extends Component {
         })
     }
 
-    // handleImageChange = (event) => {
-    //     this.props.dispatch({
-    //         type: 'ADD_PLACE_IMAGE',
-    //         payload: this.state.image
-    //     })
-    // }
-
 
     handleFormSubmit = (event) => {
         event.preventDefault();

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
+import {globals} from '../../globals';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -10,8 +11,23 @@ const mapStateToProps = state => ({
 });
 
 class CreateCardView extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state={ 
+        cardImage: ''
+    }
+
+}
+
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.config = {
+      cloud_name: globals.env.CLOUDINARY_NAME,
+      api_key: globals.env.CLOUDINARY_KEY,
+      api_secret: globals.env.CLOUDINARY_SECRET,
+      upload_preset: "ry3fnckm"
+   }
   }
 
   componentDidUpdate() {
@@ -20,6 +36,25 @@ class CreateCardView extends Component {
     }
   }
 
+  openCloudinary = (event) => {
+    event.preventDefault();
+    window.cloudinary.openUploadWidget(this.config, (error, result) => {
+      if (result) {
+        let cloudinaryUrl = result[0].url 
+        this.setState({
+          // store url to local state BEFORE dispatching an action
+          ...this.state,
+          image: cloudinaryUrl
+        })
+        this.props.dispatch({
+            type: 'ADD_CARD_IMAGE',
+            payload: this.state.image
+        })
+        console.log(this.state.image);
+      }
+    })
+}
+
   handleMessageChange = (event) => {
     this.props.dispatch({
       type: 'ADD_CARD_MESSAGE',
@@ -27,13 +62,6 @@ class CreateCardView extends Component {
     })
   }
 
-
-  handleImageChange = (event) => {
-    this.props.dispatch({
-      type: 'ADD_CARD_IMAGE',
-      payload: event.target.value
-    })
-  }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -66,7 +94,7 @@ class CreateCardView extends Component {
             </h1>
           <form onSubmit={this.handleFormSubmit}>
             <input type="text" placeholder="message" value={this.props.cardToAdd.cardToAdd.message} name="message" onChange={this.handleMessageChange} />
-            <input type="text" placeholder="image path" value={this.props.cardToAdd.cardToAdd.img_path} name="img_path" onChange={this.handleImageChange} />
+            <button onClick={this.openCloudinary}>Upload an image</button>
             <input type="submit" value="submit" />
 
           </form>

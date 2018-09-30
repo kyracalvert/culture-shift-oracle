@@ -91,9 +91,9 @@ class OracleView extends Component {
           <div >
             {greeting}
             </div>
-          <div className="crop-image">
+          <card className="crop-image">
             <p>{this.state.img_path} </p>
-          </div>
+          </card>
       </div> 
     );
   }
