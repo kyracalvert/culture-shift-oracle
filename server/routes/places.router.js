@@ -5,8 +5,13 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-    
+router.get('/randomplace', (req, res) => {
+    const query = `SELECT "place", "description", "img_path" FROM "places" ORDER BY RANDOM() LIMIT 1;`;
+    pool.query(query).then((results)=> {
+        res.send(results.rows);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });
 });
 
 /**

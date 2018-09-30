@@ -12,7 +12,9 @@ const mapStateToProps = state => ({
 class OracleView extends Component {
   constructor (props) {
     super(props);
-    this.state = {img_path: '', name: '', word: '', show: false};
+    this.state = {img_path: '', name: '', word: '', show: false, place: ''};
+    this.timeIncrementMs = 50;
+    this.showSpinnerIfReturnGreaterThanMs = 200;
   }
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -44,10 +46,21 @@ class OracleView extends Component {
       console.log('HERE',results.data);
       const img_path = results.data.contents.quote;
       this.setState({img_path: img_path})
+      axios({
+        method: 'GET',
+        url: '/api/addplace/randomplace'
+      }).then((results) => {
+        this.setState({
+          place: results.data[0]
+        })
+        console.log(this.state.place)
+      })
     }).catch((error) => {
       console.log('HERE',error)
     })
   }
+
+  
   render() {
     let content = null;
     let greeting;
@@ -62,6 +75,14 @@ class OracleView extends Component {
           </h3>
       </div>
     );
+
+        // if (this.state.isLoading &&
+        //     this.state.msElapsed > this.showSpinnerIfReturnGreaterThanMs) {
+        //     return <h1>Test</h1>;
+        // } else if (this.state.isLoading &&
+        //     this.state.msElapsed <= this.showSpinnerIfReturnGreaterThanMs) {
+        //     return (null);
+        // }
     return (
       <div>
         {content}
@@ -82,6 +103,15 @@ class OracleView extends Component {
           <card className="crop-image">
             <p>{this.state.img_path} </p>
           </card>
+          
+              <card className="random-place">
+              <p>{this.state.place.place}</p>
+              <p>{this.state.place.description}</p>
+              <img src={this.state.place.img_path}/>
+              </card>
+         
+      
+         
       </div> 
     );
   }
