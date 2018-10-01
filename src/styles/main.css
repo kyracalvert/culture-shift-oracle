@@ -10,8 +10,14 @@ body {
 
 
         text-align: center;
+        background: url(http://hdqwalls.com/wallpapers/moon-rays-red-space-sky-abstract-mountains-4c.jpg) -80px -80px;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-stroke-width: .1px;
+        -webkit-text-stroke-color: white;
         font-size: 80px; 
         font-weight: bold;     
+        font-family: 'Luckiest Guy', cursive;
         margin: 50px auto;
         color: white;
      
@@ -25,12 +31,25 @@ body {
     height: 250px;
     background-color: black;
     margin: 10px;
+    position: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card_archive {
+    width: 250px;
+    height: 250px;
+    margin: 10px;
     float: left;
+    display: block;
+   
 }
 
 .card-image {
     width: 250px;
     width: 250px;
+    float: left;
     
 }
 
@@ -40,8 +59,8 @@ body {
 }
 
 .crop-image {
-    width: 600px;
-    height: 370px;
+    width: 250px;
+    height: 250px;
     overflow: hidden;
     
 }
@@ -54,8 +73,8 @@ body {
 
 #welcome {
     color: white;
-    position: relative;
     font-size: 12px;
+    float: right;
 }
 
 .your_card_text {
@@ -229,7 +248,8 @@ li a:hover {
     color: #eee;
 }
 
-p, h3 {
+
+p, h1, h3, h5 {
     color: white;
 }
 
@@ -237,6 +257,9 @@ h1, h3 {
     text-align: center;
 }
 
+.login {
+    color: grey
+}
 /* link styled as button */
 .your_own {
     font: bold 11px Arial;
@@ -254,28 +277,39 @@ h1, h3 {
     right: 10px;
 }
 
-/* link styled as button */
-.draw_random {
-    font: bold 11px Arial;
-    text-decoration: none;
-    background-color: #EEEEEE;
-    color: #333333;
-    padding: 10px 10px 10px 10px;
-    border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-    border-radius: 4px;
-    position: fixed;
-    bottom: -4px;
-    left: 10px;
+.random-place {
+    position: center;
+    display: block;
+    /* margin-left: 50%; */
+    float: left;
+    width: 250px;
+    height: 250px;
+}
+.crop-image {
+    height: 250px;
+    width: 250px;
+    display: block;
+    float: left;
+    margin-right: 50px;
+    margin-left: 290px;
 }
 
-.crop-image {
-    height: 300px;
-    width: 300px;
+
+.travel_img {
+    width: 250px;
+    height: 250px;
     position: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50%;
+    float: left;
+    border: 0px;
+}
+
+.your_oracle, .your_oracle h3 {
+    text-align: center;
+    text-decoration-line: underline;
+    text-decoration-color: #0AACFA;
+    font-size: 20px;
 }

@@ -9,7 +9,7 @@ const axios = require("axios");
 router.get('/:word', (req, res) => {
     axios({
         method: 'GET', 
-        url: `http://quotes.rest/quote/search?minlength=50&maxlength=500&query=${req.params.word}&private=false`,
+        url: `http://quotes.rest/quote/search?minlength=50&maxlength=1000&query=${req.params.word}&private=false`,
         // `http://quotes.rest/quote/image/search?category=${req.params.word}&private=true`,
         headers: { 'X-TheySaidSo-Api-Secret': process.env.API_KEY }, 
         //process.env.API_KEY will be replaced with the API key in .env file

@@ -72,17 +72,12 @@ class NavTwo extends Component {
           </Link>
             </li>
             <li>
-              <Link to="/randomcard">
-                Random Card
-          </Link>
-            </li>
-            <li>
               <Link to="/createcard">
                 Create WizCard
           </Link>
             </li>
             <li>
-              <button
+              <button className="logout" class="btn-xs btn-primary"
                 onClick={this.logout}
               >
                 Log Out

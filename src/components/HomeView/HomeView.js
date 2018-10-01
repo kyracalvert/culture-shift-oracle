@@ -76,12 +76,10 @@ class HomeView extends Component {
       <div>
         {content}
         {/* PUT SHARED CONTENT HERE */}
-        <h2 className="your_card_text">Today's WizCard:</h2>
+        <h2 className="your_card_text">Click to Receive Your Message:</h2>
         <div onClick={this.toggleCardDisplay} className="card_view">
           {cardMessage}
         </div>
-        {JSON.stringify(this.state.randomCard)}
-
         <Link class="btn btn-info btn-lg btn-huge" to="/oracle">Consult the Oracle</Link>
       </div>
     );

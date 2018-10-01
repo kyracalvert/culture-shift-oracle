@@ -98,9 +98,9 @@ class AddPlaceView extends Component {
             content = (
                 <div>
                     <h1
-                        id="welcome"
+                        id="destination"
                     >
-                        Add a destination here, {this.props.user.userName}!
+                        Add a destination
             </h1>
                     <div onSubmit={this.handleFormSubmit}>
                         <input className="oracle_inputs" type="text" placeholder="place" value={this.props.placeToAdd.placeToAdd.place} name="place" onChange={this.handlePlaceChange} />

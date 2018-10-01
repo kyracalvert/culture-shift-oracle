@@ -12,11 +12,10 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import HomeView from './components/HomeView/HomeView';
 import OracleView from './components/OracleView/OracleView';
 import CardArchiveView from './components/CardArchiveView/CardArchiveView';
-import RandomCardView from './components/RandomCardView/RandomCardView';
 import CreateCardView from './components/CreateCardView/CreateCardView';
+import AddPlaceView from './components/AddPlaceView/AddPlaceView';
 
 import './styles/main.css';
-import AddPlaceView from './components/AddPlaceView/AddPlaceView';
 
 const App = () => (
   <div>
@@ -56,10 +55,6 @@ const App = () => (
           <Route
           path="/cardarchive"
           component={CardArchiveView}
-        />
-         <Route
-          path="/randomcard"
-          component={RandomCardView}
         />
          <Route
           path="/createcard"

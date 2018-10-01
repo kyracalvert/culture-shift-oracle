@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { throws } from 'assert';
+import { Button } from 'react-bootstrap';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -65,9 +67,9 @@ class CardArchiveView extends Component {
       content = (
         <div>
           <h1
-            id="welcome"
+            id="wiz-h1"
           >
-            Here is the WizCard Archive, {this.props.user.userName}!
+            Wisdom Card Archive
             </h1>
           <card>
             {this.props.cardDisplayReducer.map((card, i) => {
@@ -82,7 +84,7 @@ class CardArchiveView extends Component {
               }
               return (
                 <li key={i}>
-                <div onClick={()=>this.toggleDisplay(i)} className="card_view">
+                <div onClick={()=>this.toggleDisplay(i)} className="card_archive">
                   {cardContent}
                   </div>
                 </li>
@@ -90,7 +92,6 @@ class CardArchiveView extends Component {
             })}
           </card>
           <br />
-          <Link className="draw_random" to="/randomcard">Draw Random</Link>
           <Link className="your_own" to="/createcard">Create Your Own</Link>
         </div>
       );

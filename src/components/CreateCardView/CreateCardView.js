@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
-import {globals} from '../../globals';
+import { globals } from '../../globals';
+import { Button } from 'react-bootstrap';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -14,11 +16,11 @@ class CreateCardView extends Component {
   constructor(props) {
     super(props);
 
-    this.state={ 
-        cardImage: ''
+    this.state = {
+      cardImage: ''
     }
 
-}
+  }
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -27,7 +29,7 @@ class CreateCardView extends Component {
       api_key: globals.env.CLOUDINARY_KEY,
       api_secret: globals.env.CLOUDINARY_SECRET,
       upload_preset: "ry3fnckm"
-   }
+    }
   }
 
   componentDidUpdate() {
@@ -40,20 +42,20 @@ class CreateCardView extends Component {
     event.preventDefault();
     window.cloudinary.openUploadWidget(this.config, (error, result) => {
       if (result) {
-        let cloudinaryUrl = result[0].url 
+        let cloudinaryUrl = result[0].url
         this.setState({
           // store url to local state BEFORE dispatching an action
           ...this.state,
           image: cloudinaryUrl
         })
         this.props.dispatch({
-            type: 'ADD_CARD_IMAGE',
-            payload: this.state.image
+          type: 'ADD_CARD_IMAGE',
+          payload: this.state.image
         })
         console.log(this.state.image);
       }
     })
-}
+  }
 
   handleMessageChange = (event) => {
     this.props.dispatch({
@@ -88,17 +90,18 @@ class CreateCardView extends Component {
       content = (
         <div>
           <h1
-            id="welcome"
+            id="create"
           >
-            Create a WizCard here, {this.props.user.userName}!
+            Create a WizCard
             </h1>
           <form onSubmit={this.handleFormSubmit}>
-            <input type="text" placeholder="message" value={this.props.cardToAdd.cardToAdd.message} name="message" onChange={this.handleMessageChange} />
-            <button onClick={this.openCloudinary}>Upload an image</button>
-            <input type="submit" value="submit" />
-
+            <input className="oracle_inputs" type="text" placeholder="message" value={this.props.cardToAdd.cardToAdd.message} name="message" onChange={this.handleMessageChange} />
+            <Button className="uploadButton" bsStyle="info" onClick={this.openCloudinary}>Upload an image</Button>
+            <br />
+            <Button className="oracle_submit" bsStyle="info" >
+              Submit
+            </Button>
           </form>
-          <p>{JSON.stringify(this.props.cardToAdd)}</p>
         </div>
       );
     }
